@@ -1,0 +1,19 @@
+primary {
+    background: #8576FF;
+}
+
+primary-dark {
+    background: #484554;
+}
+
+primary-select {
+    background: #ADA9BB;
+}
+
+primary-select-dark {
+    background: #6A6676;
+}
+
+select {
+    background: #FCF7FF;
+}

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div id="sidebar" class="sidebar">
+        <div class="logo">
+          <h2>Full Logo</h2>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li>
+              <a href="#" class="active"
+                ><i class="fas fa-home"></i><span>Home</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-calendar-alt"></i><span>Events</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-microphone"></i><span>Speakers</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chart-line"></i><span>Reports</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-bell"></i><span>Notifications</span
+                ><span class="badge">3</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-envelope"></i><span>Messages</span></a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-cog"></i><span>Settings</span></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="collapse-section">
+          <button id="collapse-btn">
+            <i class="fas fa-angle-left"></i> <span>Collapse</span>
+          </button>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <!-- <div class="dark-mode-toggle">
+              <input type="checkbox" id="dark-mode-switch" class="dark-mode-switch">
+              <label for="dark-mode-switch">Dark Mode</label>
+            </div> -->
+
+        <div class="dark-mode-toggle">
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-switch" />
+            <span class="slider round"></span>
+          </label>
+          <span class="dark-mode-text">Dark Mode</span>
+        </div>
+
+        <div class="profile">
+          <p><i class="fas fa-user-circle"></i> Wencesluas Obimka</p>
+          <p>obimkasomto@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <header>
+          <h1>Welcome! here's your summary</h1>
+        </header>
+        <div class="stats">
+          <div class="stat-box">
+            <h3>
+              Total Events
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="info-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="8"></line>
+              </svg>
+            </h3>
+            <p>
+              100,000
+              <span class="up">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="arrow-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+                <span class="value">+5.0%</span>
+              </span>
+            </p>
+          </div>
+          <div class="stat-box">
+            <h3>
+              Active Speakers
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="info-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="8"></line>
+              </svg>
+            </h3>
+            <p>
+              25
+              <span class="down">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="arrow-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="7" x2="17" y2="17"></line>
+                  <polyline points="7 17 17 17 17 7"></polyline>
+                </svg>
+                <span class="value"> -5.0%</span>
+              </span>
+            </p>
+          </div>
+          <div class="stat-box">
+            <h3>
+              Total Registrations
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="info-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="8"></line>
+              </svg>
+            </h3>
+            <p>
+              300
+              <span class="up">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="arrow-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+                <span class="value">+5.0%</span>
+              </span>
+            </p>
+          </div>
+          <div class="stat-box">
+            <h3>
+              Total Revenue
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="info-icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="8"></line>
+              </svg>
+            </h3>
+            <p>
+              $500,000
+              <span class="up">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="arrow-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+                <span class="value">+5.0%</span>
+              </span>
+            </p>
+          </div>
+        </div>
+        <section class="chart">
+          <h2>Event Registrations per month</h2>
+          <div class="event-registrations">
+            <div class="chart-container">
+              <canvas id="barChart"></canvas>
+            </div>
+            <div class="carousel-container">
+              <div class="carousel-slide active">
+                <img src="./public/assets/images/image2.jpeg" alt="Image 1" />
+                <div class="carousel-content">
+                  <h3>Latest News & Updates</h3>
+                  <p>
+                    Turpis interdum nunc varius ornare dignissim pretium. Massa
+                    ornare quis aliquet sed vitae. Sed velit nisi, fermentum
+                    erat. Fringilla purus, erat fringilla tincidunt quisque non.
+                    Pellentesque in ut tellus.
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <img src="/public/assets//images/image1.jpeg" alt="Image 2" />
+                <div class="carousel-content">
+                  <h3>Latest News & Updates</h3>
+                  <p>
+                    Turpis interdum nunc varius ornare dignissim pretium. Massa
+                    ornare quis aliquet sed vitae. Sed velit nisi, fermentum
+                    erat. Fringilla purus, erat fringilla tincidunt quisque non.
+                    Pellentesque in ut tellus.
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <img src="./public/assets/images/image3.jpeg" alt="Image 3" />
+                <div class="carousel-content">
+                  <h3>Latest News & Updates</h3>
+                  <p>
+                    Turpis interdum nunc varius ornare dignissim pretium. Massa
+                    ornare quis aliquet sed vitae. Sed velit nisi, fermentum
+                    erat. Fringilla purus, erat fringilla tincidunt quisque non.
+                    Pellentesque in ut tellus.
+                  </p>
+                </div>
+              </div>
+              <button class="prev" >&#10094;</button>
+              <button class="next" >&#10095;</button>
+            </div>
+          </div>
+        </section>
+        <section class="events-history">
+          <h2>Events History</h2>
+          <div class="event-history-container">
+            <!-- Filter and Sort Controls -->
+            <div class="controls">
+              <input type="text" placeholder="Search..." class="search-input" />
+              <select class="date-filter">
+                <option value="">Date</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
+              <select class="status-filter">
+                <option value="">Status</option>
+                <option value="completed">Completed</option>
+                <option value="in-progress">In Progress</option>
+              </select>
+              <select class="name-filter">
+                <option value="">Name</option>
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+              </select>
+              <div class="results-count">Displaying 100 results</div>
+              <div class="sort-options">
+                <label for="sort">Sort:</label>
+                <select id="sort">
+                  <option value="most-recent">Most Recent</option>
+                  <option value="least-recent">Least Recent</option>
+                </select>
+              </div>
+              <button class="export-btn">Export</button>
+            </div>
+
+            <!-- Table for Events History -->
+            <table class="events-table">
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Date</th>
+                  <th>Speaker</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cloud Innovation Summit</td>
+                  <td>2024-10-15</td>
+                  <td>Jane Doe</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Blockchain Revolution Conference</td>
+                  <td>2024-11-05</td>
+                  <td>Dr. Peter Smith</td>
+                  <td><span class="status in-progress">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td>AI in Healthcare Symposium</td>
+                  <td>2024-12-01</td>
+                  <td>Dr. Aisha Malik</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Future of Fintech Forum</td>
+                  <td>2024-10-25</td>
+                  <td>Jane Lee</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Data Analytics in Business</td>
+                  <td>2024-11-12</td>
+                  <td>Rachel Moore</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Sustainable Energy Expo</td>
+                  <td>2024-09-28</td>
+                  <td>Prof. Alan Green</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Web3 Interfaces Workshop</td>
+                  <td>2024-10-10</td>
+                  <td>Kevin Adams</td>
+                  <td><span class="status in-progress">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td>Cyber Security for Startups</td>
+                  <td>2024-11-19</td>
+                  <td>Emily Zhang</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Smart Cities Forum</td>
+                  <td>2024-10-18</td>
+                  <td>Dr. Maria Hernandez</td>
+                  <td><span class="status in-progress">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td>Tech Safari Mixer</td>
+                  <td>2024-09-39</td>
+                  <td>Guest Panel</td>
+                  <td><span class="status in-progress">In Progress</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <!-- <div class="pagination">
+                      <button class="pagination-btn prev">&laquo;</button>
+                      <span class="page-number active">1</span>
+                      <span class="page-number">2</span>
+                      <span class="page-number">3</span>
+                      <button class="pagination-btn next">&raquo;</button>
+                    </div> -->
+          </div>
+          <div class="table-controls">
+            <div class="pagination">
+              <button class="pagination-btn prev">&laquo;</button>
+              <button class="page-number active">1</button>
+              <button class="page-number">2</button>
+              <button class="page-number">3</button>
+              <button class="pagination-btn next">&raquo;</button>
+              <!-- Pagination buttons -->
+            </div>
+            <div class="show-rows">
+              Show:
+              <select name="rows" id="rows">
+                <option value="10">10 rows</option>
+                <option value="20">20 rows</option>
+                <option value="50">50 rows</option>
+              </select>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
