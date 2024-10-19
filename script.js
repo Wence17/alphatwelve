@@ -15,7 +15,7 @@ collapseBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
   
   // Toggle the arrow direction based on collapse state
-  const icon = collapseBtn.querySelector("i");
+  const icon = collapseBtn.querySelector("svg");
   if (sidebar.classList.contains("collapsed")) {
     icon.classList.replace("fa-angle-left", "fa-angle-right");
   } else {

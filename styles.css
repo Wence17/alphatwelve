@@ -29,13 +29,10 @@ body {
 .sidebar {
     width: 240px;
     height: 100vh;
-    /* top: 20px;
-left: 130px; */
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     gap: 8px;
-    border-right: 1px solid light-dark(#F1F5F9,#484554);
+    border-right: 1px solid light-dark(#F1F5F9, #484554);
     background: light-dark(#FFFFFF, #484554);
     transition: width 0.3s;
 }
@@ -131,7 +128,7 @@ left: 130px; */
     font-size: 20px;
     width: 20px;
     height: 20px;
-    color: light-dark(#ADA9BB,#FCF7FF);
+    color: light-dark(#ADA9BB, #ADA9BB);
 }
 
 
@@ -140,17 +137,33 @@ left: 130px; */
     font-weight: 400;
     line-height: 20px;
     text-align: left;
-    color: light-dark(#334155,#FFFFFF);
+    color: light-dark(#334155, #FFFFFF);
     transition: opacity 0.3s;
 }
 
 
-.nav ul li a.active,.nav ul li a.active span,.nav ul li a.active svg,
-.nav ul li a:hover, .nav ul li a:hover span,.nav ul li a:hover svg {
-    background: light-dark(#FCF7FF,#8576FF);
-    color: light-dark(#8576FF,#FCF7FF);
+.nav ul li a.active,
+.nav ul li a.active span,
+.nav ul li a.active svg,
+.nav ul li a:hover,
+.nav ul li a:hover span,
+.nav ul li a:hover svg {
+    background: light-dark(#FCF7FF, #8576FF);
+    color: light-dark(#8576FF, #FCF7FF);
 }
 
+.bottom-sidebar {
+    width: 224px;
+    height: 252px;
+    gap: 8px;
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    background: transparent;
+}
+
+
+/* continue from here */
 .nav ul li a .badge {
     background-color: red;
     color: white;
