@@ -134,19 +134,21 @@ left: 130px; */
     color: light-dark(#ADA9BB,#FCF7FF);
 }
 
+
 .nav ul li a span {
-font-size: 14px;
-font-weight: 400;
-line-height: 20px;
-text-align: left;
-color: light-dark(#334155,#FFFFFF);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: light-dark(#334155,#FFFFFF);
     transition: opacity 0.3s;
 }
 
-.nav ul li a.active,
-.nav ul li a:hover {
-    background: transparent;
-    color: #8576FF;
+
+.nav ul li a.active,.nav ul li a.active span,.nav ul li a.active svg,
+.nav ul li a:hover, .nav ul li a:hover span,.nav ul li a:hover svg {
+    background: light-dark(#FCF7FF,#8576FF);
+    color: light-dark(#8576FF,#FCF7FF);
 }
 
 .nav ul li a .badge {
