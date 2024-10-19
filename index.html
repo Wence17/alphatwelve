@@ -14,31 +14,85 @@
     <div class="container">
       <!-- Sidebar -->
       <div id="sidebar" class="sidebar">
-        <div class="logo">
-          <h2>Full Logo</h2>
+        <div class="top-sidebar">
+          <div class="logo">
+            <h2>Full Logo</h2>
+          </div>
+          <nav class="nav">
+            <ul>
+              <li>
+                <a href="#" class="active">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                    />
+                  </svg>
+                  <span>Home</span></a
+                >
+              </li>
+              <li>
+                <a href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
+                    />
+                  </svg>
+
+                  <span>Events</span></a
+                >
+              </li>
+              <li>
+                <a href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    />
+                  </svg>
+                  <span>Speakers</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                  </svg>                  
+                  <span>Reports</span></a
+                >
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav class="nav">
+
+        <div class="bottom-sidebar">
           <ul>
-            <li>
-              <a href="#" class="active"
-                ><i class="fas fa-home"></i><span>Home</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="fas fa-calendar-alt"></i><span>Events</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="fas fa-microphone"></i><span>Speakers</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="fas fa-chart-line"></i><span>Reports</span></a
-              >
-            </li>
             <li>
               <a href="#"
                 ><i class="fas fa-bell"></i><span>Notifications</span
@@ -54,30 +108,30 @@
               <a href="#"><i class="fas fa-cog"></i><span>Settings</span></a>
             </li>
           </ul>
-        </nav>
-        <div class="collapse-section">
-          <button id="collapse-btn">
-            <i class="fas fa-angle-left"></i> <span>Collapse</span>
-          </button>
-        </div>
+          <div class="collapse-section">
+            <button id="collapse-btn">
+              <i class="fas fa-angle-left"></i> <span>Collapse</span>
+            </button>
+          </div>
 
-        <!-- Dark Mode Toggle -->
-        <!-- <div class="dark-mode-toggle">
+          <!-- Dark Mode Toggle -->
+          <!-- <div class="dark-mode-toggle">
               <input type="checkbox" id="dark-mode-switch" class="dark-mode-switch">
               <label for="dark-mode-switch">Dark Mode</label>
             </div> -->
 
-        <div class="dark-mode-toggle">
-          <label class="switch">
-            <input type="checkbox" id="dark-mode-switch" />
-            <span class="slider round"></span>
-          </label>
-          <span class="dark-mode-text">Dark Mode</span>
-        </div>
+          <div class="dark-mode-toggle">
+            <label class="switch">
+              <input type="checkbox" id="dark-mode-switch" />
+              <span class="slider round"></span>
+            </label>
+            <span class="dark-mode-text">Dark Mode</span>
+          </div>
 
-        <div class="profile">
-          <p><i class="fas fa-user-circle"></i> Wencesluas Obimka</p>
-          <p>obimkasomto@gmail.com</p>
+          <div class="profile">
+            <p><i class="fas fa-user-circle"></i> Wencesluas Obimka</p>
+            <p>obimkasomto@gmail.com</p>
+          </div>
         </div>
       </div>
 
@@ -260,7 +314,10 @@
           <h2>Event Registrations per month</h2>
           <div class="event-registrations">
             <div class="chart-container">
-              <canvas id="barChart"></canvas>
+              <canvas
+                id="barChart"
+                style="height: 240px; width: 474px; margin: 10px"
+              ></canvas>
             </div>
             <div class="carousel-container">
               <div class="carousel-slide active">
@@ -299,8 +356,19 @@
                   </p>
                 </div>
               </div>
-              <button class="prev" >&#10094;</button>
-              <button class="next" >&#10095;</button>
+              <button class="prev">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="next">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+              <!-- Carousel Pagination Bars -->
+              <div class="carousel-pagination">
+                <span class="bar active"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
             </div>
           </div>
         </section>
@@ -309,31 +377,58 @@
           <div class="event-history-container">
             <!-- Filter and Sort Controls -->
             <div class="controls">
-              <input type="text" placeholder="Search..." class="search-input" />
-              <select class="date-filter">
-                <option value="">Date</option>
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
-              </select>
-              <select class="status-filter">
-                <option value="">Status</option>
-                <option value="completed">Completed</option>
-                <option value="in-progress">In Progress</option>
-              </select>
-              <select class="name-filter">
-                <option value="">Name</option>
-                <option value="asc">A-Z</option>
-                <option value="desc">Z-A</option>
-              </select>
-              <div class="results-count">Displaying 100 results</div>
-              <div class="sort-options">
-                <label for="sort">Sort:</label>
-                <select id="sort">
-                  <option value="most-recent">Most Recent</option>
-                  <option value="least-recent">Least Recent</option>
+              <div class="left">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  class="search-input"
+                />
+                <select class="date-filter">
+                  <option value="">Date</option>
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
                 </select>
+                <select class="status-filter">
+                  <option value="">Status</option>
+                  <option value="completed">Completed</option>
+                  <option value="in-progress">In Progress</option>
+                </select>
+                <select class="name-filter">
+                  <option value="">Name</option>
+                  <option value="asc">A-Z</option>
+                  <option value="desc">Z-A</option>
+                </select>
+                <div class="results-count">Displaying 100 results</div>
               </div>
-              <button class="export-btn">Export</button>
+              <div class="right">
+                <div class="sort-options">
+                  <label for="sort">Sort:</label>
+                  <select id="sort">
+                    <option value="most-recent">Most Recent</option>
+                    <option value="least-recent">Least Recent</option>
+                  </select>
+                </div>
+                <div class="button-set">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                  <div class="export-btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="size-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                      />
+                    </svg>
+                    <p>Export</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Table for Events History -->
@@ -351,96 +446,167 @@
                   <td>Cloud Innovation Summit</td>
                   <td>2024-10-15</td>
                   <td>Jane Doe</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <span class="status completed"
+                      ><div class="dot"></div>
+                      Completed</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Blockchain Revolution Conference</td>
                   <td>2024-11-05</td>
                   <td>Dr. Peter Smith</td>
-                  <td><span class="status in-progress">In Progress</span></td>
+                  <td>
+                    <span class="status in-progress"
+                      ><div class="dot"></div>
+                      In Progress</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>AI in Healthcare Symposium</td>
                   <td>2024-12-01</td>
                   <td>Dr. Aisha Malik</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <span class="status completed"
+                      ><div class="dot"></div>
+                      Completed</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Future of Fintech Forum</td>
                   <td>2024-10-25</td>
                   <td>Jane Lee</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <span class="status completed"
+                      ><div class="dot"></div>
+                      Completed</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Data Analytics in Business</td>
                   <td>2024-11-12</td>
                   <td>Rachel Moore</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <span class="status completed"
+                      ><div class="dot"></div>
+                      Completed</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Sustainable Energy Expo</td>
                   <td>2024-09-28</td>
                   <td>Prof. Alan Green</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <span class="status completed"
+                      ><div class="dot"></div>
+                      Completed</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Web3 Interfaces Workshop</td>
                   <td>2024-10-10</td>
                   <td>Kevin Adams</td>
-                  <td><span class="status in-progress">In Progress</span></td>
+                  <td>
+                    <span class="status in-progress"
+                      ><div class="dot"></div>
+                      In Progress</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Cyber Security for Startups</td>
                   <td>2024-11-19</td>
                   <td>Emily Zhang</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td>
+                    <span class="status completed"
+                      ><div class="dot"></div>
+                      Completed</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Smart Cities Forum</td>
                   <td>2024-10-18</td>
                   <td>Dr. Maria Hernandez</td>
-                  <td><span class="status in-progress">In Progress</span></td>
+                  <td>
+                    <span class="status in-progress"
+                      ><div class="dot"></div>
+                      In Progress</span
+                    >
+                  </td>
                 </tr>
                 <tr>
                   <td>Tech Safari Mixer</td>
                   <td>2024-09-39</td>
                   <td>Guest Panel</td>
-                  <td><span class="status in-progress">In Progress</span></td>
+                  <td>
+                    <span class="status in-progress"
+                      ><div class="dot"></div>
+                      In Progress</span
+                    >
+                  </td>
                 </tr>
               </tbody>
             </table>
 
             <!-- Pagination -->
-            <!-- <div class="pagination">
-                      <button class="pagination-btn prev">&laquo;</button>
-                      <span class="page-number active">1</span>
-                      <span class="page-number">2</span>
-                      <span class="page-number">3</span>
-                      <button class="pagination-btn next">&raquo;</button>
-                    </div> -->
-          </div>
-          <div class="table-controls">
-            <div class="pagination">
-              <button class="pagination-btn prev">&laquo;</button>
-              <button class="page-number active">1</button>
-              <button class="page-number">2</button>
-              <button class="page-number">3</button>
-              <button class="pagination-btn next">&raquo;</button>
-              <!-- Pagination buttons -->
-            </div>
-            <div class="show-rows">
-              Show:
-              <select name="rows" id="rows">
-                <option value="10">10 rows</option>
-                <option value="20">20 rows</option>
-                <option value="50">50 rows</option>
-              </select>
+            <div class="table-controls">
+              <div class="pagination">
+                <button class="pagination-btn prev">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 19.5 8.25 12l7.5-7.5"
+                    />
+                  </svg>
+                </button>
+                <button class="page-number active">1</button>
+                <button class="page-number">2</button>
+                <button class="page-number">3</button>
+                <button class="pagination-btn next">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="show-rows">
+                Show:
+                <select name="rows" id="rows">
+                  <option value="10">10 rows</option>
+                  <option value="20">20 rows</option>
+                  <option value="50">50 rows</option>
+                </select>
+              </div>
             </div>
           </div>
         </section>
       </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="script.js"></script>
