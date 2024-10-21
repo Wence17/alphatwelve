@@ -1,4 +1,5 @@
 const collapseBtn = document.getElementById("collapse-btn");
+const sidebar = document.querySelector(".sidebar");
 const paginationBtns = document.querySelectorAll(".pagination .page-number");
 const prevBtn = document.querySelector(".pagination-btn.prev");
 const nextBtn = document.querySelector(".pagination-btn.next");
@@ -6,63 +7,99 @@ const darkModeSwitch = document.getElementById("dark-mode-switch");
 const slides = document.querySelectorAll(".carousel-slide");
 const prevSlide = document.querySelector(".prev");
 const nextSlide = document.querySelector(".next");
-const bars = document.querySelectorAll('.carousel-pagination .bar');
+const bars = document.querySelectorAll(".carousel-pagination .bar");
 
-const paginationFill = document.querySelector('.carousel-pagination-fill');
+const paginationFill = document.querySelector(".carousel-pagination-fill");
 
 collapseBtn.addEventListener("click", () => {
-  // Toggle the collapsed class
+  const leftAngle = `<svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+      />
+    </svg>`
+  const rightAngle =
+    `<svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+      />
+    </svg>`
+  ;
+
+  // Toggle the collapsed class with an animation
   sidebar.classList.toggle("collapsed");
+  sidebar.style.transition = "width 0.3s ease";
+
+  const icon = document.getElementById('collapse-icon');
+  const text = document.getElementById('collapse-text');
+
   
   // Toggle the arrow direction based on collapse state
-  const icon = collapseBtn.querySelector("svg");
   if (sidebar.classList.contains("collapsed")) {
-    icon.classList.replace("fa-angle-left", "fa-angle-right");
+    icon.innerHTML = rightAngle;
+    text.setAttribute('hidden', '');
+    collapseBtn.setAttribute("aria-expanded", "false");
+    // collapseBtn.querySelector('span')?.style.display = 'none';
   } else {
-    icon.classList.replace("fa-angle-right", "fa-angle-left");
+    icon.innerHTML = leftAngle;
+    text.removeAttribute('hidden');
+    collapseBtn.setAttribute("aria-expanded", "true");
+    // collapseBtn.querySelector('span')?.style.display = 'block';
+  }
+
+});
+
+const darkModeToggle = document.getElementById("dark-mode-switch");
+
+// Check for system preferences
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+// Apply the initial theme based on the system's preference
+if (prefersDarkScheme.matches) {
+  document.documentElement.classList.add("dark-mode");
+  darkModeToggle.checked = true;
+} else {
+  document.documentElement.classList.add("light-mode");
+}
+
+// Add listener for system theme changes
+prefersDarkScheme.addEventListener("change", (e) => {
+  if (e.matches) {
+    document.documentElement.classList.remove("light-mode");
+    document.documentElement.classList.add("dark-mode");
+  } else {
+    document.documentElement.classList.remove("dark-mode");
+    document.documentElement.classList.add("light-mode");
   }
 });
 
-
-
-
-
-const darkModeToggle = document.getElementById('dark-mode-switch');
-  
-  // Check for system preferences
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-  // Apply the initial theme based on the system's preference
-  if (prefersDarkScheme.matches) {
-    document.documentElement.classList.add('dark-mode');
-    darkModeToggle.checked = true;
+// Toggle theme manually when checkbox is clicked
+darkModeToggle.addEventListener("change", function () {
+  if (darkModeToggle.checked) {
+    document.documentElement.classList.remove("light-mode");
+    document.documentElement.classList.add("dark-mode");
   } else {
-    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove("dark-mode");
+    document.documentElement.classList.add("light-mode");
   }
-
-  // Add listener for system theme changes
-  prefersDarkScheme.addEventListener("change", (e) => {
-    if (e.matches) {
-      document.documentElement.classList.remove('light-mode');
-      document.documentElement.classList.add('dark-mode');
-    } else {
-      document.documentElement.classList.remove('dark-mode');
-      document.documentElement.classList.add('light-mode');
-    }
-  });
-
-  // Toggle theme manually when checkbox is clicked
-  darkModeToggle.addEventListener("change", function() {
-    if (darkModeToggle.checked) {
-      document.documentElement.classList.remove('light-mode');
-      document.documentElement.classList.add('dark-mode');
-    } else {
-      document.documentElement.classList.remove('dark-mode');
-      document.documentElement.classList.add('light-mode');
-    }
-  });
-
-  
+});
 
 // Bar Chart Code
 const ctx = document.getElementById("barChart").getContext("2d");
@@ -99,9 +136,12 @@ const barChart = new Chart(ctx, {
       y: {
         beginAtZero: true,
         border: {
-          
           dash: (context) => {
-            return context.tick.value === 0 ? [] : context.tick.value === 1000 ? [0,2] : [2,3.5]
+            return context.tick.value === 0
+              ? []
+              : context.tick.value === 1000
+              ? [0, 2]
+              : [2, 3.5];
           },
         },
         grid: {
@@ -110,20 +150,20 @@ const barChart = new Chart(ctx, {
         },
         ticks: {
           stepSize: 200,
-            padding: 8,
-          },
+          padding: 8,
         },
-        x: {
-          border: {
+      },
+      x: {
+        border: {
           display: false,
           // dash: [2,5],
           dash: (context) => {
-            return context.index === 0 ? [0,2] : [2,3.5]
+            return context.index === 0 ? [0, 2] : [2, 3.5];
           },
         },
         grid: {
           // display: (context) => {
-            //   return context.tick.label !== "Jan" ? true : false; // hide the grid line at zero (label at start)
+          //   return context.tick.label !== "Jan" ? true : false; // hide the grid line at zero (label at start)
           // },
           lineWidth: 2,
           drawTicks: false,
@@ -168,9 +208,9 @@ function showSlide(index) {
 // Function to update pagination bars
 function updatePagination() {
   bars.forEach((bar, i) => {
-    bar.classList.remove('active');
+    bar.classList.remove("active");
     if (i === currentSlide) {
-      bar.classList.add('active');
+      bar.classList.add("active");
     }
   });
 }
@@ -189,7 +229,7 @@ prevSlide.addEventListener("click", () => {
 
 // Event listeners for pagination bars
 bars.forEach((bar, index) => {
-  bar.addEventListener('click', () => {
+  bar.addEventListener("click", () => {
     currentSlide = index; // Set the current slide to the index of the clicked bar
     showSlide(currentSlide); // Show the selected slide
   });
