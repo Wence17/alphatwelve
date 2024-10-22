@@ -67,51 +67,50 @@ collapseBtn.addEventListener("click", () => {
 });
 
 
-
-  // Check if a theme is saved in local storage
-  const savedTheme = localStorage.getItem('theme');
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Function to switch between dark and light themes
+  const darkModeSwitch = document.getElementById('dark-mode-switch'); // Adjusted ID to match the HTML
 
- // Apply theme override
+  // Function to apply the selected theme
   function applyTheme(theme) {
     if (theme === 'dark') {
-      document.documentElement.style.colorScheme = 'dark'; // Override with dark
-      localStorage.setItem('theme', 'dark'); // Save choice
+      document.documentElement.style.colorScheme = 'dark'; // Apply dark mode
+      localStorage.setItem('theme', 'dark'); // Save preference
     } else if (theme === 'light') {
-      document.documentElement.style.colorScheme = 'light'; // Override with light
-      localStorage.setItem('theme', 'light'); // Save choice
+      document.documentElement.style.colorScheme = 'light'; // Apply light mode
+      localStorage.setItem('theme', 'light'); // Save preference
     } else {
       document.documentElement.style.colorScheme = ''; // Follow system theme
       localStorage.removeItem('theme'); // Remove manual override
     }
   }
 
-  // Check saved theme in localStorage
+  // Determine the initial theme
+  const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Set the initial theme
-  if (savedTheme) {
-    applyTheme(savedTheme);
-    darkModeSwitch.checked = savedTheme === 'dark';
-  } else if (systemPrefersDark) {
-    darkModeSwitch.checked = true; // Set to dark by default if system prefers dark
-  }
+  // Set the initial theme based on saved preference or system preference
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  applyTheme(initialTheme);
+  darkModeSwitch.checked = initialTheme === 'dark'; // Set switch position based on theme
 
   // Add listener for switch changes
-  darkModeSwitch.addEventListener('change', function (event) {
+  darkModeSwitch.addEventListener('change', function(event) {
     if (event.target.checked) {
       applyTheme('dark');
+      updateChartTheme(barChart, 'dark'); // Update chart colors for dark mode
     } else {
       applyTheme('light');
+      updateChartTheme(barChart, 'light'); // Update chart colors for light mode
     }
   });
 
   // Listen to system theme changes and apply when no manual override exists
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
+      const newTheme = e.matches ? 'dark' : 'light';
+      applyTheme(newTheme);
+      darkModeSwitch.checked = e.matches; // Adjust switch position
+      updateChartTheme(barChart, newTheme); // Update chart colors
     }
   });
 });
@@ -129,89 +128,35 @@ function updateChartTheme(chart, theme) {
   chart.update();
 }
 
-
 // Bar Chart Code
 const ctx = document.getElementById("barChart").getContext("2d");
+const savedTheme = localStorage.getItem('theme');
 const barChart = new Chart(ctx, {
   type: "bar",
   data: {
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    datasets: [
-      {
-        // label: 'Event Registrations',
-        data: [700, 950, 790, 400, 1000, 500, 820, 300, 820, 680, 1000, 600],
-        backgroundColor: "#8576FF",
-        borderColor: "#8576FF",
-        borderWidth: 1,
-      },
-    ],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      data: [700, 950, 790, 400, 1000, 500, 820, 300, 820, 680, 1000, 600],
+      backgroundColor: "#8576FF",
+      borderColor: "#8576FF",
+      borderWidth: 1,
+    }],
   },
   options: {
     responsive: true,
     scales: {
       y: {
         beginAtZero: true,
-        border: {
-          dash: (context) => {
-            return context.tick.value === 0
-              ? []
-              : context.tick.value === 1000
-              ? [0, 2]
-              : [2, 3.5];
-          },
-        },
-        grid: {
-          lineWidth: 2,
-          drawTicks: false,
-        },
         ticks: {
-          color: savedTheme ? '#FFFFFF' : '#64748B', // Dark mode or light mode,
+          color: savedTheme === 'dark' ? '#FFFFFF' : '#64748B',
           stepSize: 200,
           padding: 8,
         },
       },
       x: {
-        border: {
-          display: false,
-          // dash: [2,5],
-          dash: (context) => {
-            return context.index === 0 ? [0, 2] : [2, 3.5];
-          },
-        },
-        grid: {
-          // display: (context) => {
-          //   return context.tick.label !== "Jan" ? true : false; // hide the grid line at zero (label at start)
-          // },
-          lineWidth: 2,
-          drawTicks: false,
-        },
         ticks: {
-          color: savedTheme ? '#FFFFFF' : '#64748B', // Dark mode or light mode,
+          color: savedTheme === 'dark' ? '#FFFFFF' : '#64748B',
           padding: 15,
-        },
-        afterTickToLabelConversion: (axis) => {
-          axis.ticks.forEach((tick, index) => {
-            if (tick.label === "Dec") {
-              axis.ticks[index].major = true; // Highlighting the last tick (Dec) if needed
-            }
-          });
-        },
-        afterBuildTicks: (axis) => {
-          // Remove the grid line after the last label (December)
-          axis.ticks.pop(); // This will remove the tick after December
         },
       },
     },
@@ -221,28 +166,19 @@ const barChart = new Chart(ctx, {
       },
     },
   }
-  
 });
-
 
 // Initial theme setup based on saved theme
 updateChartTheme(barChart, savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 
-// Listen for changes in the local storage for theme updates
+// Listen for changes in local storage for theme updates
 window.addEventListener('storage', (event) => {
   if (event.key === 'theme') {
     const newTheme = event.newValue || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(newTheme);
     updateChartTheme(barChart, newTheme);
   }
 });
-
-// Optional: Listen for system theme changes
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  const systemTheme = e.matches ? 'dark' : 'light';
-  if (!localStorage.getItem('theme')) {
-    updateChartTheme(barChart, systemTheme);
-  }
-})
 
 
 // Carousel Logic
