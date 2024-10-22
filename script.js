@@ -68,53 +68,70 @@ collapseBtn.addEventListener("click", () => {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to switch between dark and light themes
-  function switchTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme); // Save theme to local storage
-  }
-
   // Check if a theme is saved in local storage
   const savedTheme = localStorage.getItem('theme');
-  const darkModeSwitch = document.getElementById('dark-mode-switch');
 
-  // Detect system theme preference
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to switch between dark and light themes
 
-  if (savedTheme) {
-    // Apply the saved theme
-    switchTheme(savedTheme);
-    darkModeSwitch.checked = savedTheme === 'dark';
-  } else if (systemPrefersDark) {
-    // Apply system theme if no saved theme
-    switchTheme('dark');
-    darkModeSwitch.checked = true;
+ // Apply theme override
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.style.colorScheme = 'dark'; // Override with dark
+      localStorage.setItem('theme', 'dark'); // Save choice
+    } else if (theme === 'light') {
+      document.documentElement.style.colorScheme = 'light'; // Override with light
+      localStorage.setItem('theme', 'light'); // Save choice
+    } else {
+      document.documentElement.style.colorScheme = ''; // Follow system theme
+      localStorage.removeItem('theme'); // Remove manual override
+    }
   }
 
-  // Add event listener to the toggle switch
+  // Check saved theme in localStorage
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Set the initial theme
+  if (savedTheme) {
+    applyTheme(savedTheme);
+    darkModeSwitch.checked = savedTheme === 'dark';
+  } else if (systemPrefersDark) {
+    darkModeSwitch.checked = true; // Set to dark by default if system prefers dark
+  }
+
+  // Add listener for switch changes
   darkModeSwitch.addEventListener('change', function (event) {
     if (event.target.checked) {
-      switchTheme('dark');
+      applyTheme('dark');
     } else {
-      switchTheme('light');
+      applyTheme('light');
     }
-    console.log(localStorage.getItem('theme')); // Log the current theme saved in localStorage
+  });
+
+  // Listen to system theme changes and apply when no manual override exists
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
   });
 });
 
+// Function to update the chart based on the theme
+function updateChartTheme(chart, theme) {
+  // Modify tick colors based on the theme
+  const tickColor = theme === 'dark' ? '#FFFFFF' : '#64748B';
+  
+  // Update the chart options
+  chart.options.scales.x.ticks.color = tickColor;
+  chart.options.scales.y.ticks.color = tickColor;
 
-// darkModeSwitch.addEventListener('click', () => {
-//   const newTheme = document.documentElement.classList.contains('dark-mode'); // Check for the class you apply for dark mode
-//   chart.options.scales.x.ticks.color = newTheme ? '#484554' : '#64748B';
-//   chart.options.scales.y.ticks.color = newTheme ? '#484554' : '#64748B';
-//   chart.update(); // Update the chart to apply new colors
-//   }),
+  // Trigger chart update
+  chart.update();
+}
+
 
 // Bar Chart Code
-const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 const ctx = document.getElementById("barChart").getContext("2d");
-console.log(isDarkMode)
 const barChart = new Chart(ctx, {
   type: "bar",
   data: {
@@ -161,7 +178,7 @@ const barChart = new Chart(ctx, {
           drawTicks: false,
         },
         ticks: {
-          color: isDarkMode ? '#FFFFFF' : '#64748B', // Dark mode or light mode,
+          color: savedTheme ? '#FFFFFF' : '#64748B', // Dark mode or light mode,
           stepSize: 200,
           padding: 8,
         },
@@ -182,7 +199,7 @@ const barChart = new Chart(ctx, {
           drawTicks: false,
         },
         ticks: {
-          color: isDarkMode ? '#FFFFFF' : '#64748B', // Dark mode or light mode,
+          color: savedTheme ? '#FFFFFF' : '#64748B', // Dark mode or light mode,
           padding: 15,
         },
         afterTickToLabelConversion: (axis) => {
@@ -204,7 +221,29 @@ const barChart = new Chart(ctx, {
       },
     },
   }
+  
 });
+
+
+// Initial theme setup based on saved theme
+updateChartTheme(barChart, savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+// Listen for changes in the local storage for theme updates
+window.addEventListener('storage', (event) => {
+  if (event.key === 'theme') {
+    const newTheme = event.newValue || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    updateChartTheme(barChart, newTheme);
+  }
+});
+
+// Optional: Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  const systemTheme = e.matches ? 'dark' : 'light';
+  if (!localStorage.getItem('theme')) {
+    updateChartTheme(barChart, systemTheme);
+  }
+})
+
 
 // Carousel Logic
 let currentSlide = 0;

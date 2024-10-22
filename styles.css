@@ -1,19 +1,7 @@
 :root {
-    --background-color: light-dark(#FFFFFF, #484554);
-    --text-color: light-dark(#000000, #FFFFFF);
     color-scheme: light dark;
-  }
-  
-  [data-theme="dark"] {
-    --background-color: #484554;
-    --text-color: #FFFFFF;
-  }
-  
-  [data-theme="light"] {
-    --background-color: #FFFFFF;
-    --text-color: #000000;
-  }
-  
+}
+
 
 * {
     margin: 0;
@@ -23,8 +11,6 @@
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
     display: flex;
     height: 100vh;
     overflow: hidden;
