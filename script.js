@@ -68,52 +68,47 @@ collapseBtn.addEventListener("click", () => {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  const darkModeSwitch = document.getElementById('dark-mode-switch'); // Adjusted ID to match the HTML
+  const darkModeSwitch = document.getElementById('dark-mode-switch');
 
   // Function to apply the selected theme
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.style.colorScheme = 'dark'; // Apply dark mode
-      localStorage.setItem('theme', 'dark'); // Save preference
     } else if (theme === 'light') {
       document.documentElement.style.colorScheme = 'light'; // Apply light mode
-      localStorage.setItem('theme', 'light'); // Save preference
     } else {
       document.documentElement.style.colorScheme = ''; // Follow system theme
-      localStorage.removeItem('theme'); // Remove manual override
     }
   }
 
-  // Determine the initial theme
-  const savedTheme = localStorage.getItem('theme');
+  // Detect system preference
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Set the initial theme based on saved preference or system preference
-  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  // Set initial theme based on system preference
+  const initialTheme = systemPrefersDark ? 'dark' : 'light';
   applyTheme(initialTheme);
-  darkModeSwitch.checked = initialTheme === 'dark'; // Set switch position based on theme
+  darkModeSwitch.checked = initialTheme === 'dark'; // Set switch position based on system theme
 
-  // Add listener for switch changes
+  // Add listener for manual switch changes
   darkModeSwitch.addEventListener('change', function(event) {
     if (event.target.checked) {
       applyTheme('dark');
-      updateChartTheme(barChart, 'dark'); // Update chart colors for dark mode
+      updateChartTheme(barChart, 'dark'); // Update chart for dark mode
     } else {
       applyTheme('light');
-      updateChartTheme(barChart, 'light'); // Update chart colors for light mode
+      updateChartTheme(barChart, 'light'); // Update chart for light mode
     }
   });
 
-  // Listen to system theme changes and apply when no manual override exists
+  // Listen to system theme changes and apply them
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      const newTheme = e.matches ? 'dark' : 'light';
-      applyTheme(newTheme);
-      darkModeSwitch.checked = e.matches; // Adjust switch position
-      updateChartTheme(barChart, newTheme); // Update chart colors
-    }
+    const newTheme = e.matches ? 'dark' : 'light';
+    applyTheme(newTheme);
+    darkModeSwitch.checked = e.matches; // Sync switch with system theme
+    updateChartTheme(barChart, newTheme); // Update chart theme
   });
 });
+
 
 // Function to update the chart based on the theme
 function updateChartTheme(chart, theme) {
